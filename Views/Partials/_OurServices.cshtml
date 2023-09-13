@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<!-- Our Services -->
+<section class="our-services">
+    <img src="~/images/backgrounds-effects/background-lines-right.svg">
+    <div class="container">
+        <h5 class="orange-text">@Model.Value("ourServicesSmallTitle")</h5>
+        <h3 class="our-services-title">@Model.Value("ourServicesTitle")</h3>
+        <div class="content-boxes">
+            <div class="box">
+                <div class="top-line"></div>
+                <div class="box-title">Business Advice</div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis in nam possimus.</p>
+                <div class="link">
+                    <a href="#"><i class="fa-light fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="top-line"></div>
+                <div class="box-title">Startup Business</div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis in nam possimus.</p>
+                <div class="link">
+                    <a href="#"><i class="fa-light fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="top-line"></div>
+                <div class="box-title">Financial Advice</div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis in nam possimus.</p>
+                <div class="link">
+                    <a href="#"><i class="fa-light fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="top-line"></div>
+                <div class="box-title">Risk Management</div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis in nam possimus.</p>
+                <div class="link">
+                    <a href="#"><i class="fa-light fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-btn">
+            <a href="@Model.Value("ourServicesButtonUrl")" class="beige-theme-btn">@Model.Value("ourServicesButtonText") <i class="fa-light fa-arrow-up-right"></i></a>
+        </div>
+    </div>
+</section>

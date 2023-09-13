@@ -1,0 +1,33 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+<!-- features -->
+<section class="features">
+    <div class="container">
+        <div class="features-info">
+            <h5 class="features-text">@Model.Value("featuresSmallTitle")</h5>
+            <h3 class="features-title">@Model.Value("featuresTitle")</h3>
+            <a href="@Model.Value("featuresButtonUrl")" class="theme-btn border">@Model.Value("featuresButtonText") <i class="fa-light fa-arrow-up-right"></i></a>
+        </div>
+        <div class="features-categories">
+            <div class="features-cube">
+                <div><i class="fa-regular fa-handshake"></i></div>
+                <h4>Business Advice</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="features-cube">
+                <div><i class="fa-regular fa-lightbulb-on"></i></div>
+                <h4>Startup Business</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="features-cube">
+                <div><i class="fa-regular fa-chart-column"></i></div>
+                <h4>Financial Advice</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="features-cube">
+                <div><i class="fa-regular fa-cube"></i></div>
+                <h4>Risk Management</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+</section>

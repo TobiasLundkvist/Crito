@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\logos\" />
     <Folder Include="wwwroot\images\backgrounds-effects\" />
+    <Folder Include="wwwroot\images\team-members\" />
   </ItemGroup>
 
   <PropertyGroup>

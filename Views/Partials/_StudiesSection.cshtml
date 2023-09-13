@@ -1,0 +1,81 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<!-- project & case studies -->
+<section class="global-project">
+    <div class="container">
+        <h5 class="orange-text">@Model.Value("studiesSmallTitle")</h5>
+        <h3 class="global-project-title">@Model.Value("studiesTitle")</h3>
+        <div class="global-project-content">
+            <div class="project-box">
+                <div class="project-box-image">
+                    
+                    @{
+                        var studiesImageOne = Model.Value<MediaWithCrops>("studiesImageOne");
+                        if (studiesImageOne != null)
+                        {
+                            <img src = "@studiesImageOne.MediaUrl()" alt = "@Model.Value("studiesTextOne")">
+                        }      
+                    }
+
+                </div>
+                <div class="project-box-title">@Model.Value("studiesTextOne")</div>
+                <div class="project-box-link">
+                    <a href="#">Read More <i class="fa-light fa-arrow-up-right"></i></a>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-box-image">
+                    
+                    @{
+                        var studiesImageTwo = Model.Value<MediaWithCrops>("studiesImageTwo");
+                        if (studiesImageTwo != null)
+                        {
+                            <img src = "@studiesImageTwo.MediaUrl()" alt = "@Model.Value("studiesTextTwo")">
+                        }      
+                    }
+                
+                </div>
+                <div class="project-box-title">@Model.Value("studiesTextTwo")</div>
+                <div class="project-box-link">
+                    <a href="#">Read More <i class="fa-light fa-arrow-up-right"></i></a>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-box-image">
+                    
+                    @{
+                        var studiesImageThree = Model.Value<MediaWithCrops>("studiesImageThree");
+                        if (studiesImageThree != null)
+                        {
+                            <img src = "@studiesImageThree.MediaUrl()" alt = "@Model.Value("studiesTextThree")">
+                        }      
+                    }
+                
+                </div>
+                <div class="project-box-title">@Model.Value("studiesTextThree")</div>
+                <div class="project-box-link">
+                    <a href="#">Read More <i class="fa-light fa-arrow-up-right"></i></a>
+                </div>
+            </div>
+            <div class="project-box">
+                <div class="project-box-image">
+                    
+                    @{
+                        var studiesImageFour = Model.Value<MediaWithCrops>("studiesImageFour");
+                        if (studiesImageThree != null)
+                        {
+                            <img src = "@studiesImageFour.MediaUrl()" alt = "@Model.Value("studiesTextFour")">
+                        }      
+                    }
+                
+                </div>
+                <div class="project-box-title">@Model.Value("studiesTextFour")</div>
+                <div class="project-box-link">
+                    <a href="#">Read More <i class="fa-light fa-arrow-up-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="@Model.Value("studiesButtonUrl")" class="black-theme-btn">@Model.Value("studiesButtonText") <i class="fa-light fa-arrow-up-right"></i></a>
+    </div>
+</section>
