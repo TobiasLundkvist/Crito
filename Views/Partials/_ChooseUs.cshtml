@@ -1,49 +1,17 @@
-﻿@using Umbraco.Cms.Core.Models
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models
+
 
 <!-- why choose us -->
 <section class="choose-us">
     <div class="choose-us-box"></div>
     <div class="container">
         <div class="choose-us-content">
-            <h5 class="orange-text">Why Choose Us</h5>
-            <h3 class="choose-us-title">Why We Are The Best Business Consulting Agency</h3>
-            <a href="#">
-                <div>
-                    <i class="fa-regular fa-thumbs-up"></i> 
-                </div>
-                <div>
-                    Process Excellence
-                    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-                </div>
-            </a>
-            <a href="#">
-                <div>
-                    <i class="fa-sharp fa-regular fa-hexagon"></i>
-                </div>
-                <div>
-                    Strategic Planning
-                    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-                </div>
-            </a>
-            <a href="#">
-                <div>
-                    <i class="fa-regular fa-clock"></i>
-                </div>
-                <div>
-                    Experience Design
-                    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-                </div>
-            </a>
-            <a href="#">
-                <div>
-                    <i class="fa-regular fa-head-side-gear"></i> 
-                </div>
-                <div>
-                    Artificial Inteligence
-                    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-                </div>
-            </a>
+            <h5 class="orange-text">@Model.Value("chooseUsSmallTitle")</h5>
+            <h3 class="choose-us-title">@Model.Value("chooseUsTitle")</h3>
+            @Html.GetBlockListHtml(Model.ChooseUs)
         </div>
         <div class="choose-us-image">
         

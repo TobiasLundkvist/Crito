@@ -1,0 +1,54 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<h5 class="orange-text">@Model.Value("ourTeamSmallTitle")</h5>
+<div class="team">
+    <h3 class="our-team-title">@Model.Value("ourTeamTitle")</h3>
+    <a href="@Model.Value("ourTeamButtonUrl")" class="beige-theme-btn">@Model.Value("ourTeamButtonText") <i class="fa-light fa-arrow-up-right"></i></a>
+</div>
+<div class="members">
+    <div class="member">
+        @{
+            var memberOneImage = Model.Value<MediaWithCrops>("memberOneImage");
+            if (memberOneImage != null)
+            {
+                <img src = "@memberOneImage.MediaUrl()" alt = "@Model.Value("memberOneRoll")">
+            }      
+        }
+        <div>@Model.Value("memberOneName")</div>
+        <p>@Model.Value("memberOneRoll")</p>
+    </div>
+    <div class="member">
+        @{
+            var memberTwoImage = Model.Value<MediaWithCrops>("memberTwoImage");
+            if (memberTwoImage != null)
+            {
+                <img src = "@memberTwoImage.MediaUrl()" alt = "@Model.Value("memberTwoRoll")">
+            }      
+        }
+        <div>@Model.Value("memberTwoName")</div>
+        <p>@Model.Value("memberTwoRoll")</p>
+    </div>
+    <div class="member">
+        @{
+            var memberThreeImage = Model.Value<MediaWithCrops>("memberThreeImage");
+            if (memberThreeImage != null)
+            {
+                <img src = "@memberThreeImage.MediaUrl()" alt = "@Model.Value("memberThreeRoll")">
+            }      
+        }
+        <div>@Model.Value("memberThreeName")</div>
+        <p>@Model.Value("memberThreeRoll")</p>
+    </div>
+    <div class="member">
+        @{
+            var memberFourImage = Model.Value<MediaWithCrops>("memberFourImage");
+            if (memberFourImage != null)
+            {
+                <img src = "@memberFourImage.MediaUrl()" alt = "@Model.Value("memberFourRoll")">
+            }      
+        }
+        <div>@Model.Value("memberFourName")</div>
+        <p>@Model.Value("memberFourRoll")</p>
+    </div>
+</div>
