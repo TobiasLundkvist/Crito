@@ -1,6 +1,90 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsItemPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Services;
+@inject IUserService UserService;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
 @{
-	Layout = "_LayoutWithBreadcrumb.cshtml";
+    Layout = "_LayoutWithBreadcrumb.cshtml";
+    var userService = UserService;
+    var image = Model.Value<IPublishedContent>("newsImage");
+
 }
+
+<section class="article-section">
+        <div class="container">
+            
+            <div class="the-article">
+                <h3 class="article-title">@Model.Name</h3>
+                <div class="article-info">
+                    <p>@Model.CreateDate.ToString("MMM dd, yyyy")</p>
+                    <i class="circle fa-solid fa-circle"></i>
+                    <p>@Model.Value("newsCategory")</p>
+                    <i class="circle fa-solid fa-circle"></i>
+                    <p>@Model.CreatorName(UserService)</p>
+                </div>
+                <div class="article-image">
+                    <img src="@image.Url()" alt="">
+                </div>
+                <p class="article-text">
+                    @Model.Value("newsTextContent")
+                </p>
+                
+                
+                <div class="article-tags">
+                    @foreach(var tag in Model.Value<IEnumerable<string>>("newsTags")) 
+                    {
+                        <a class="tag" href="#">@tag</a>
+                    }
+
+                </div>
+            </div>
+
+            <div class="posts">
+                <form class="search-posts">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input class="search-post" type="text" placeholder= "Type to search...">
+                </form>
+                <div class="recent-posts">
+                    <h4 class="recent-post-title">Recent Posts</h4>
+                    <a class="post-link" href="#">
+                        <div class="post">
+                            <h6 class="post-title">How To Blow Through Capital At An Incredible Rate</h6>
+                            <p class="post-datum">Jan 14, 2020</p>
+                        </div>
+                    </a>
+                    <a href="" class="post-link">
+                        <div class="post">
+                            <h6 class="post-title">Design Studios That Everyone Should Know About? </h6>
+                            <p class="post-datum">Jan 14, 2020</p>
+                        </div>
+                    </a>
+                    <a href="" class="post-link">
+                        <div class="post">
+                            <h6 class="post-title">How did we get 1M+ visitors in 30 days without anything!</h6>
+                            <p class="post-datum">Jan 14, 2020</p>
+                        </div>
+                    </a>
+                    <a href="" class="post-link">
+                        <div class="post">
+                            <h6 class="post-title">Figma On Figma: How We Built Our Website Design System</h6>
+                            <p class="post-datum">Jan 14, 2020</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-categories">
+                    <h6 class="post-categories-title">Categories</h6>
+                    <ul class="categories">
+                        <a href="#"><li>Technology - <span>20 Posts</span></li></a>
+                        <a href="#"><li>Freelancing - <span>7 Posts</span></li></a>
+                        <a href="#"><li>Writing - <span>16 Posts</span></li></a>
+                        <a href="#"><li>Marketing - <span>11 Posts</span></li></a>
+                        <a href="#"><li>Business - <span>35 Posts</span></li></a>
+                        <a href="#"><li>Education - <span>14 Posts</span></li></a>
+                    </ul>
+                </div>
+            </div>
+
+        </div> 
+    </section>
