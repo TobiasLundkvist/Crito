@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.TeamMembers)Model.Content;
+}
+
+<div class="member">
+    @{
+        var memberImage = content.Value<MediaWithCrops>("memberImage");
+        if (memberImage != null)
+        {
+            <img src = "@memberImage.MediaUrl()" alt = "@content.Value("memberRoll")">
+        }      
+    }
+    <div>@content.Value("memberName")</div>
+    <p>@content.Value("memberRoll")</p>
+</div>

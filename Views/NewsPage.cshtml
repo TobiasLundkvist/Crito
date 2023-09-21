@@ -28,11 +28,6 @@
     <div class="container">
         <h3 class="article-title">Our News & Articles</h3>
         <div class="articles-grid">
-                
-                
-
-            
-    
             @if (pagedItems != null)
             {
                 @foreach (var item in pagedItems!)
@@ -89,6 +84,7 @@
             }
 
         </div>
-        
     </div>
 </section>
+
+@await Html.PartialAsync("_NewsFormSection")
