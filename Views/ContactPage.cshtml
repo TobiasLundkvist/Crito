@@ -1,0 +1,41 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "_LayoutWithBreadcrumb.cshtml";
+
+    var contactForm = new Crito.Models.ContactForm();
+}
+
+@await Html.PartialAsync("_CompanyInfo")
+
+<!-- contact-us -->
+<section class="contact-us">
+    <div class="container">
+        <h3 class="contact-us-title">Leave us a message for any information.</h3>
+        
+        
+        @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post))
+        {
+            <div class="contact-form">
+                @*<div asp-validation-summary="All"></div>*@
+
+                <input asp-for="@contactForm.Name" type="text" placeholder="Name*">
+                <span asp-validation-for="@contactForm.Name" class="invalid"></span>
+            
+                <input asp-for="@contactForm.Email" type="email" placeholder="Email*">
+                <span asp-validation-for="@contactForm.Email" class="invalid"></span>
+            
+                <textarea asp-for="@contactForm.Message" placeholder="Your Message*"></textarea>
+                <span asp-validation-for="@contactForm.Message" class="invalid"></span>
+            
+                <button type="submit" class="theme-btn">Send Message <i class="fa-light fa-arrow-up-right"></i></button>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- map -->
+<section class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d65225.208688886385!2d15.12005520635308!3d59.27804747856495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465c017f144aff39%3A0xcfe3b0bad018c93e!2zw5ZyZWJybw!5e0!3m2!1ssv!2sse!4v1695218452320!5m2!1ssv!2sse" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
