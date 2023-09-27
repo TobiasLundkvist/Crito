@@ -1,0 +1,71 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var itemsPerHomePage = 3;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+        pageNumber = 1;
+
+
+    var selection = Umbraco?.Content(Guid.Parse("bdf56bd9-455c-4585-b1fd-e7c72e4ef648"))?
+        .ChildrenOfType("newsItemPage")?
+        .Where(x => x.IsVisible())
+        .OrderByDescending(x => x.CreateDate).ToList();
+
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerHomePage).Take(itemsPerHomePage);
+
+}
+
+<!-- Article & News -->
+<section class="news">
+    <div class="container">
+        <h5 class="orange-text">Article & News</h5>
+        <div class="news-content">
+            <h3 class="news-title">Get Every Single Articles & News</h3>
+            <a class="white-theme-btn">Browse Articles <i class="fa-light fa-arrow-up-right"></i></a>
+        </div>
+        <div class="news-cards">
+            @if (pagedItems != null)
+            {
+                @foreach (var item in pagedItems!)
+                {
+    
+                    var url = item.Url();
+                    var date = item.CreateDate;
+                    var image = item.Value<IPublishedContent>("newsImage");
+                    var category = item.Value("newsCategory");
+                    var title = item.Name();
+                    var preamble = item.Value("newsPreamble");
+    
+    
+                    <a href="@url">
+                        <div class="news-card">
+                            <div class="datum-box">@date.ToString("dd")<span>@date.ToString("MMM")</span></div>
+                            <div class="news-image">
+                                <img src="@image?.Url()" alt="">
+                            </div>
+                            <div class="news-category">@category</div>
+                            <div class="news-text">@title</div>
+                            <p class="news-body-text">@preamble</p>
+                        </div>
+                    </a>
+                }
+            }
+        </div>
+        <div class="dot-pagnation">
+            @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerHomePage); i++) 
+            {
+                if (i == pageNumber)
+                {
+                    <a href="#" class="dot-link dot-active">@i</a>
+                }
+                else
+                {
+                    <a class="dot-link" href="?page=@i">@i</a>
+                }
+            }
+        </div>
+    </div>
+</section>
