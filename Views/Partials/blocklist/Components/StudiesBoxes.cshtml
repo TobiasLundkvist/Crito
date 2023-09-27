@@ -1,0 +1,23 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.StudiesBoxes)Model.Content;
+}
+
+<div class="project-box-image">
+    
+        @{
+            var studieImage = content.Value<MediaWithCrops>("studieImage");
+            if (studieImage != null)
+            {
+                <img src = "@studieImage.MediaUrl()" alt = "@content.Value("studieText")">
+            }      
+        }
+    
+    </div>
+    <div class="project-box-title">@content.Value("studieText")</div>
+    <div class="project-box-link">
+        <a href="@content.Value("studieUrl")">Read More <i class="fa-light fa-arrow-up-right"></i></a>
+    </div>
+</div>
