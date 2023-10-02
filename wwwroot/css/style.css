@@ -758,8 +758,8 @@ a {
 }
 .global-project .container .global-project-content .umb-block-list {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   gap: 30px;
 }
 .global-project .container .global-project-content .umb-block-list .project-box {

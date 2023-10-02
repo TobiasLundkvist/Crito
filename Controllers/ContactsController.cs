@@ -13,8 +13,11 @@ namespace Crito.Controllers
 {
     public class ContactsController : SurfaceController
     {
-        public ContactsController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly ContactFormService _contactFormService;
+
+        public ContactsController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, ContactFormService contactFormService) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
+            _contactFormService = contactFormService;
         }
 
 
@@ -22,20 +25,14 @@ namespace Crito.Controllers
         public IActionResult Index(ContactForm contactForm)
         {
             if(!ModelState.IsValid)
+            {
                 return CurrentUmbracoPage();
-
-           
-            return LocalRedirect(contactForm.RedirectUrl ?? "/");
-
-            
-            
-            //using var mail = new MailService();
-            // to sender
-            //mail.SendAsync(contactForm.Email, "Your request was received.", "Hi your request was received and you will be contacted soon.").ConfigureAwait(false);
-
-            // to us
-            //mail.SendAsync("tobias_lundkvist@hotmail.com", $"{contactForm.Name} requested following", contactForm.Message ).ConfigureAwait(false);
-
+            }
+            else
+            {
+                _contactFormService?.CreateMessage(contactForm);
+                return LocalRedirect(contactForm.RedirectUrl ?? "/");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Crito.Models.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Crito.Models;
 
