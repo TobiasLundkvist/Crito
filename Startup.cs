@@ -35,6 +35,7 @@ namespace Crito
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(_config.GetConnectionString("SQLiteDB")));
             services.AddScoped<ContactFormService>();
+            services.AddScoped<SubscribeFormService>();
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
