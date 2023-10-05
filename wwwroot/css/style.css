@@ -173,6 +173,11 @@ a {
 .dot-pagnation .dot-active {
   background-color: #191919;
 }
+.error-text {
+    font-size: 0.8em;
+    padding: 0px 0px 10px 35px;
+    color: red
+}
 
 /* components*/
 .background-navbar {

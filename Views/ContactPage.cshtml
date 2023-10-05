@@ -20,14 +20,14 @@
             <div class="contact-form">
                 @*<div asp-validation-summary="All"></div>*@
 
-                <input asp-for="@contactForm.Name" type="text" placeholder="Name*">
-                <span asp-validation-for="@contactForm.Name" class="invalid"></span>
+                <input asp-for="@contactForm.Name" type="text" placeholder="Name*" onkeyup="validateName(event)">
+                <span asp-validation-for="@contactForm.Name" class="invalid" id="errorName"></span>
             
-                <input asp-for="@contactForm.Email" type="email" placeholder="Email*">
-                <span asp-validation-for="@contactForm.Email" class="invalid"></span>
-            
-                <textarea asp-for="@contactForm.Message" placeholder="Your Message*"></textarea>
-                <span asp-validation-for="@contactForm.Message" class="invalid"></span>
+                <input asp-for="@contactForm.Email" type="email" placeholder="Email*" onkeyup="validateEmail(event)">
+                <span asp-validation-for="@contactForm.Email" class="invalid" id="errorEmail"></span>
+
+                <textarea asp-for="@contactForm.Message" placeholder="Your Message*" onkeyup="validateMessage(event)"></textarea>
+                <span asp-validation-for="@contactForm.Message" class="invalid" id="errorMessage"></span>
             
                 <button type="submit" class="theme-btn">Send Message <i class="fa-light fa-arrow-up-right"></i></button>
             </div>
